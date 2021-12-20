@@ -10,10 +10,9 @@
 </head>
 <body>
     <?php include('errors.php'); ?>
-
     <form method="post" action="login.php">
-        <input type="text" name="user" placeholder="Usuario o email">
-        <input type="password" name="pass" placeholder="Contraseña">
+        <input type="text" name="user_login" placeholder="Usuario o email">
+        <input type="password" name="pass_login" placeholder="Contraseña">
         <input type="submit" name="login" value="Login">
     </form>
     <a href="register.php">Registrar</a>

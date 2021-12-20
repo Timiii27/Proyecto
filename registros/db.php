@@ -56,20 +56,19 @@ if (isset($_POST['submit'])) {
 
   // Finally, register user if there are no errors in the form
   if (count($errors) == 0) {
-  	$password = hash('sha512', $password_1);//encrypt the password before saving in the database
+  	$password = md5($password_1);//encrypt the password before saving in the database
 
-  	$query = "INSERT INTO users (username, email, password) 
-  			  VALUES('$username', '$email', '$password')";
+  	$query = "INSERT INTO users (username, email, password) VALUES('$username', '$email', '$password')";
   	mysqli_query($db, $query);
   	$_SESSION['username'] = $username;
     
-  	header('location: vote.php');
+  	header('location: login.php');
   }
 }
 
 if (isset($_POST['login'])) {
-    $username = mysqli_real_escape_string($db, $_POST['user']);
-    $password = mysqli_real_escape_string($db, $_POST['pass']);
+    $username = mysqli_real_escape_string($db, $_POST['user_login']);
+    $password = mysqli_real_escape_string($db, $_POST['pass_login']);
   
     if (empty($username)) {
         array_push($errors, "Username is required");
@@ -79,16 +78,18 @@ if (isset($_POST['login'])) {
     }
   
     if (count($errors) == 0) {
-        $password = hash('sha512', $password);//encrypt the password before saving in the database
-        $query = "SELECT * FROM users WHERE username='$username' AND password='$password'";
+        $pass = md5($password);
+        $query = "SELECT * FROM users WHERE username='$username' AND password='$pass'";
         $results = mysqli_query($db, $query);
         if (mysqli_num_rows($results) == 1) {
           $_SESSION['username'] = $username;
-          header('location: index.php');
+          setcookie('session',0,time()+60*60*24*30);
+          header('location: vote.php');
         }else {
             array_push($errors, "Wrong username/password combination");
         }
     }
   }
+
   
   ?>
