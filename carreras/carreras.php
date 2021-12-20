@@ -28,7 +28,7 @@
                         "<th>Puntos</th>".
                     "</tr>";
             foreach ($xml->RaceTable->Race->ResultsList->Result as $carrera) {
-                
+                $tiempos = [];
                 echo 
 
                         "<tr>".
@@ -38,6 +38,7 @@
                             "<td>" . $carrera->Status . "</td>" .
                             "<td>" . $carrera['points'] . "</td>" .
                         "</tr>";
+                
             }
             "</table>";
         

@@ -1,0 +1,94 @@
+<?php
+session_start();
+
+// initializing variables
+$username = "";
+$email    = "";
+$errors = array(); 
+
+// connect to the database
+$db = mysqli_connect('localhost', 'root', '', 'f1');
+
+// REGISTER USER
+if (isset($_POST['submit'])) {
+  // receive all input values from the form
+  $username = mysqli_real_escape_string($db, $_POST['user']);
+  $email = mysqli_real_escape_string($db, $_POST['email']);
+  $password_1 = mysqli_real_escape_string($db, $_POST['pass1']);
+  $password_2 = mysqli_real_escape_string($db, $_POST['pass2']);
+  $number = preg_match('@[0-9]@', $password_1);
+  $uppercase = preg_match('@[A-Z]@', $password_1);
+  $lowercase = preg_match('@[a-z]@', $password_1);
+  $specialChars = preg_match('@[^\w]@', $password_1);
+  // form validation: ensure that the form is correctly filled ...
+  // by adding (array_push()) corresponding error unto $errors array
+  if (empty($username)) {
+      array_push($errors, "Username is required");
+    }
+  if (empty($email)) {
+      array_push($errors, "Email is required"); 
+    }
+  if (empty($password_1)) {
+      array_push($errors, "Password is required"); 
+    }
+    if(strlen($password_1) < 8 || !$number || !$uppercase || !$lowercase || !$specialChars) {
+        array_push($errors,"Password must be at least 8 characters in length and must contain at least one number, one upper case letter, one lower case letter and one special character.");
+    }
+  if ($password_1 != $password_2) {
+	array_push($errors, "The two passwords do not match");
+  }
+
+  // first check the database to make sure 
+  // a user does not already exist with the same username and/or email
+  $user_check_query = "SELECT * FROM users WHERE username='$username' OR email='$email' LIMIT 1";
+  $result = mysqli_query($db, $user_check_query);
+  $user = mysqli_fetch_assoc($result);
+  
+  if ($user) { // if user exists
+    if ($user['username'] === $username) {
+      array_push($errors, "Username already exists");
+    }
+
+    if ($user['email'] === $email) {
+      array_push($errors, "email already exists");
+    }
+  }
+
+  // Finally, register user if there are no errors in the form
+  if (count($errors) == 0) {
+  	$password = hash('sha512', $password_1);//encrypt the password before saving in the database
+
+  	$query = "INSERT INTO users (username, email, password) 
+  			  VALUES('$username', '$email', '$password')";
+  	mysqli_query($db, $query);
+  	$_SESSION['username'] = $username;
+    
+  	header('location: vote.php');
+  }
+}
+
+if (isset($_POST['login'])) {
+    $username = mysqli_real_escape_string($db, $_POST['user']);
+    $password = mysqli_real_escape_string($db, $_POST['pass']);
+  
+    if (empty($username)) {
+        array_push($errors, "Username is required");
+    }
+    if (empty($password)) {
+        array_push($errors, "Password is required");
+    }
+  
+    if (count($errors) == 0) {
+        $password = hash('sha512', $password);//encrypt the password before saving in the database
+        $query = "SELECT * FROM users WHERE username='$username' AND password='$password'";
+        $results = mysqli_query($db, $query);
+        if (mysqli_num_rows($results) == 1) {
+          $_SESSION['username'] = $username;
+          header('location: index.php');
+        }else {
+            array_push($errors, "Wrong username/password combination");
+        }
+    }
+  }
+  
+  ?>

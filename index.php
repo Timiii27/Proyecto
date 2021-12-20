@@ -22,10 +22,10 @@
             <a href="#leaderbord">Reglas</a>
             <a href="/carreras/carreras.php">Carreras</a>
             <button>
-                <a href="/pages/login.php">Login</a>
+                <a href="/registros/login.php">Login</a>
             </button>
             <button>
-                <a href="/pages/login.php">Register</a>
+                <a href="/registros/register.php">Register</a>
             </button>
         </div>
     </nav>
