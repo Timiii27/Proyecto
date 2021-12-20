@@ -19,7 +19,8 @@
         <div class="d-flex col-8 justify-content-evenly">
             <a href="#ranking">Rankings</a>
             <a href="#leaderbord">Leaderboard</a>
-            <a href="#leaderbord">Puntuacion</a>
+            <a href="#leaderbord">Reglas</a>
+            <a href="/carreras/carreras.php">Carreras</a>
             <button>
                 <a href="/pages/login.php">Login</a>
             </button>
@@ -37,14 +38,13 @@
             <button><a href="">Empezar a jugar!</a></button>
         </div>
     </section>
-    <section class="ranking ">
-        <div class="d-flex p-5">
-            <h1>Pilotos</h1>
-            <table class="table">
+    <section class="ranking">
+        <div class="d-flex col-12 justify-content-around align-items-center">
+            
+            <table class="m-5">
                 <tr>
                     <th>Posicion</th>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
+                    <th>Piloto</th>
                     <th>Puntos</th>
                 </tr>
 
@@ -54,16 +54,15 @@
                 foreach ($xml->StandingsTable->StandingsList->DriverStanding as $driver) {
 
                     echo "<tr>" .
-                        "<th>" . $driver['position'] . "</th>" .
-                        "<th>" . $driver->Driver->GivenName . "</th>" .
-                        "<th>" . $driver->Driver->FamilyName . "</th>" .
-                        "<th>" . $driver['points'] . "</th>" .
+                        "<td>" . $driver['position'] . "</td>" .
+                        "<td>" . $driver->Driver->GivenName ." ". $driver->Driver->FamilyName . "</td>" .
+                        "<td>" . $driver['points'] . "</td>" .
                         "</tr>";
                 }
                 ?>
             </table>
-            <h1>Constructores</h1>
-            <table class="table ">
+            
+            <table class="m-5">
                 <tr>
                     <th>Posicion</th>
                     <th>Nombre</th>
@@ -77,19 +76,17 @@
                 foreach ($xml->StandingsTable->StandingsList->ConstructorStanding as $constructor) {
 
                     echo "<tr>" .
-                        "<th>" . $constructor['position'] . "</th>" .
-                        "<th>" . $constructor->Constructor->Name . "</th>" .
-                        "<th>" . $constructor['wins'] . "</th>" .
-                        "<th>" . $constructor['points'] . "</th>" .
+                        "<td>" . $constructor['position'] . "</td>" .
+                        "<td>" . $constructor->Constructor->Name . "</td>" .
+                        "<td>" . $constructor['wins'] . "</td>" .
+                        "<td>" . $constructor['points'] . "</td>" .
                         "</tr>";
                 }
                 ?>
             </table>
         </div>
     </section>
-    <section class="leaderboard">
 
-    </section>
     <!-- Scripts -->
     <script src="/js/script.js"></script>
 </body>
