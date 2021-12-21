@@ -21,5 +21,6 @@
             <option value="ver">verstappen</option>
         </select>
     </form>
+    <a href="logout.php">Logout</a>
 </body>
 </html>

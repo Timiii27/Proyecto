@@ -38,12 +38,9 @@
                             "<td>" . $carrera->Status . "</td>" .
                             "<td>" . $carrera['points'] . "</td>" .
                         "</tr>";
-                
             }
             "</table>";
-        
-        
-
+            
         }else{
             echo "Elige una carrera";
         }
