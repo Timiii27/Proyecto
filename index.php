@@ -1,3 +1,4 @@
+<?php include 'xml/guardar.php' ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>F1</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="/styles/home.css">
+    <link rel="stylesheet" href="/styles/main.css">
 </head>
 
 <body>
@@ -35,7 +36,7 @@
             <p>Unete junto a otros jugadores alrededor de todo el mundo para poder disfrutar de un apasionante torneo a lo largo de la temporda de la Formula 1</p>
         </div>
         <div>
-            <button><a href="">Empezar a jugar!</a></button>
+            <button><a href="/registros/register.php">Empezar a jugar!</a></button>
         </div>
     </section>
     <section class="ranking">
@@ -49,13 +50,13 @@
                 </tr>
 
                 <?php
-                $xml = simplexml_load_file("http://ergast.com/api/f1/current/driverStandings");
+                 $xml = simplexml_load_file("drivers.xml.cache");
 
                 foreach ($xml->StandingsTable->StandingsList->DriverStanding as $driver) {
 
                     echo "<tr>" .
                         "<td>" . $driver['position'] . "</td>" .
-                        "<td>" . $driver->Driver->GivenName ." ". $driver->Driver->FamilyName . "</td>" .
+                        "<td>" . $driver->Driver->GivenName ." "."<span>".$driver->Driver->FamilyName . "</span> </td>" .
                         "<td>" . $driver['points'] . "</td>" .
                         "</tr>";
                 }
@@ -71,7 +72,7 @@
                 </tr>
 
                 <?php
-                $xml = simplexml_load_file("http://ergast.com/api/f1/current/constructorStandings");
+                $xml = simplexml_load_file("constructors.xml.cache");
 
                 foreach ($xml->StandingsTable->StandingsList->ConstructorStanding as $constructor) {
 

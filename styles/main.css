@@ -1,0 +1,83 @@
+/* Fuentes */
+@font-face {
+    font-family: "FormulaBlack";
+    src: local("Formula1-Black"), url(fonts/Formula1-Black.ttf) format("truetype");
+    
+  }
+@font-face {
+    font-family: "FormulaRegular";
+    src: local("Formula1-Regular"),url(fonts/Formula1-Regular.ttf) format("truetype");
+  }
+@font-face {
+    font-family: "FormulaBold";
+    src: local("Formula1-Bold"), url(fonts/Formula1-Bold.ttf) format("truetype");
+    
+  }
+@font-face {
+    font-family: "FormulaWide";
+    src: local("Formula1-Wide"), url(fonts/Formula1-Wide.ttf) format("truetype");
+    
+  }
+body{
+    font-family: FormulaBold ;
+}
+nav{
+    height: 5rem;
+    position: fixed;
+    backdrop-filter: blur(10px);
+    font-family: FormulaRegular ;
+    transition: 0.3s ease-in-out;
+}
+
+.nav-active{
+    background-color:rgba(255, 255, 255, 0.788);
+    backdrop-filter: blur(10px);
+
+}
+.nav-active a{
+    color: black;
+}
+.nav-active button{
+    border:2px solid black;
+}   
+a {
+    color: white;
+    text-decoration: none;   
+}
+button:hover,a:hover{
+    transform: translateY(-7px);
+    transition: 0.3s ease-in;
+    background-color: red;
+    color: white;
+}
+
+button {
+    border-radius: 10px;
+    background-color: transparent;
+    border: 2px solid white;
+}
+
+.home-section {
+    height:100vh;
+    background-image: url("/images/fondo.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;   
+}
+
+.card-1{
+    color: white;
+    padding:20px;
+    border-radius: 40px;
+}
+.card-1 h1{
+    font-size: 4rem;
+    
+}
+td{
+    font-family: FormulaRegular ;
+}
+td span{
+    font-family: FormulaBold;
+}
+
