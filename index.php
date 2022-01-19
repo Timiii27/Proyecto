@@ -39,52 +39,59 @@
             <button><a href="/registros/register.php">Empezar a jugar!</a></button>
         </div>
     </section>
-    <section class="ranking">
-        <div class="d-flex col-12 justify-content-around align-items-center">
-            
-            <table class="m-5">
-                <tr>
-                    <th>Posicion</th>
-                    <th>Piloto</th>
-                    <th>Puntos</th>
-                </tr>
+    <section class="ranking mt-5">
+        <div class="d-flex col-12 flex-column justify-content-around align-items-center">
+            <div class="d-flex align-items-center">
+                <img src="https://img.icons8.com/emoji/48/000000/chequered-flag.png"/>
+                <h1>Ranking</h1>
+                <img src="https://img.icons8.com/emoji/48/000000/chequered-flag.png"/>
+            </div>
+            <div class="d-flex">
+                <table class="m-5 ">
+                    <tr>
+                        <th>Posicion</th>
+                        <th>Piloto</th>
+                        <th>Puntos</th>
+                    </tr>
+    
+                    <?php
+                     $xml = simplexml_load_file("drivers.xml.cache");
+    
+                    foreach ($xml->StandingsTable->StandingsList->DriverStanding as $driver) {
+    
+                        echo "<tr>" .
+                            "<td>" . $driver['position'] . "</td>" .
+                            "<td>" . $driver->Driver->GivenName ." "."<span>".$driver->Driver->FamilyName . "</span> </td>" .
+                            "<td>" . $driver['points'] . "</td>" .
+                            "</tr>";
+                    }
+                    ?>
+                </table>
+                
+                <table class="m-5">
+                    <tr>
+                        <th>Posicion</th>
+                        <th>Nombre</th>
+                        <th>Victorias</th>
+                        <th>Puntos</th>
+                    </tr>
+    
+                    <?php
+                    $xml = simplexml_load_file("constructors.xml.cache");
+    
+                    foreach ($xml->StandingsTable->StandingsList->ConstructorStanding as $constructor) {
+    
+                        echo "<tr>" .
+                            "<td>" . $constructor['position'] . "</td>" .
+                            "<td><span>" . $constructor->Constructor->Name . "</span></td>" .
+                            "<td>" . $constructor['wins'] . "</td>" .
+                            "<td>" . $constructor['points'] . "</td>" .
+                            "</tr>";
+                    }
+                    ?>
+                </table>
 
-                <?php
-                 $xml = simplexml_load_file("drivers.xml.cache");
-
-                foreach ($xml->StandingsTable->StandingsList->DriverStanding as $driver) {
-
-                    echo "<tr>" .
-                        "<td>" . $driver['position'] . "</td>" .
-                        "<td>" . $driver->Driver->GivenName ." "."<span>".$driver->Driver->FamilyName . "</span> </td>" .
-                        "<td>" . $driver['points'] . "</td>" .
-                        "</tr>";
-                }
-                ?>
-            </table>
-            
-            <table class="m-5">
-                <tr>
-                    <th>Posicion</th>
-                    <th>Nombre</th>
-                    <th>Victorias</th>
-                    <th>Puntos</th>
-                </tr>
-
-                <?php
-                $xml = simplexml_load_file("constructors.xml.cache");
-
-                foreach ($xml->StandingsTable->StandingsList->ConstructorStanding as $constructor) {
-
-                    echo "<tr>" .
-                        "<td>" . $constructor['position'] . "</td>" .
-                        "<td>" . $constructor->Constructor->Name . "</td>" .
-                        "<td>" . $constructor['wins'] . "</td>" .
-                        "<td>" . $constructor['points'] . "</td>" .
-                        "</tr>";
-                }
-                ?>
-            </table>
+            </div>
         </div>
     </section>
 

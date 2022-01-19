@@ -22,7 +22,7 @@ body{
     font-family: FormulaBold ;
 }
 nav{
-    height: 5rem;
+    height: 5.5rem;
     position: fixed;
     backdrop-filter: blur(10px);
     font-family: FormulaRegular ;
