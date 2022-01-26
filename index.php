@@ -39,36 +39,38 @@
             <button><a href="/registros/register.php">Empezar a jugar!</a></button>
         </div>
     </section>
-    <section class="ranking mt-5">
-        <div class="d-flex col-12 flex-column justify-content-around align-items-center">
-            <div class="d-flex align-items-center">
-                <img src="https://img.icons8.com/emoji/48/000000/chequered-flag.png"/>
-                <h1>Ranking</h1>
-                <img src="https://img.icons8.com/emoji/48/000000/chequered-flag.png"/>
-            </div>
-            <div class="d-flex">
-                <table class="m-5 ">
+    <div class="ranking">
+        <div class="banner-ranking d-flex justify-content-center mb-5 align-items-center">
+            <h1>Ranking de pilotos</h1>
+        </div>
+        <div class="d-flex flex-column justify-content-around align-items-center">
+            
+                <table class="table table-bordered w-75">
                     <tr>
                         <th>Posicion</th>
                         <th>Piloto</th>
+                        <th>Victorias</th>
                         <th>Puntos</th>
                     </tr>
     
                     <?php
-                     $xml = simplexml_load_file("drivers.xml.cache");
+                     $xml_drivers = simplexml_load_file("drivers.xml.cache");
     
-                    foreach ($xml->StandingsTable->StandingsList->DriverStanding as $driver) {
+                    foreach ($xml_drivers->StandingsTable->StandingsList->DriverStanding as $driver) {
     
                         echo "<tr>" .
                             "<td>" . $driver['position'] . "</td>" .
                             "<td>" . $driver->Driver->GivenName ." "."<span>".$driver->Driver->FamilyName . "</span> </td>" .
+                            "<td>" . $driver['wins'].
                             "<td>" . $driver['points'] . "</td>" .
                             "</tr>";
                     }
                     ?>
                 </table>
-                
-                <table class="m-5">
+                <div class="banner-ranking d-flex justify-content-center mb-5 mt-5 align-items-center w-100">
+                    <h1>Ranking de constructores</h1>
+                </div>
+                <table class="table table-bordered w-75">
                     <tr>
                         <th>Posicion</th>
                         <th>Nombre</th>
@@ -77,9 +79,9 @@
                     </tr>
     
                     <?php
-                    $xml = simplexml_load_file("constructors.xml.cache");
+                    $xml_constructors = simplexml_load_file("constructors.xml.cache");
     
-                    foreach ($xml->StandingsTable->StandingsList->ConstructorStanding as $constructor) {
+                    foreach ($xml_constructors->StandingsTable->StandingsList->ConstructorStanding as $constructor) {
     
                         echo "<tr>" .
                             "<td>" . $constructor['position'] . "</td>" .
@@ -91,7 +93,51 @@
                     ?>
                 </table>
 
-            </div>
+            
+        </div>
+    </div>
+    <section>
+        <div>
+            <table class="table table-striped  table-bordered">
+                        <tr>
+
+            <th> Posicion</th>
+            </th>
+            <th>Piloto</th>
+            <th>Tiempo de vuelta</th>
+            <th>Estado</th>
+            <th>Puntos</th>
+            </tr>
+            <?php
+            $tiempos=[];
+            
+            $xml_race = simplexml_load_file("last_race.xml.cache");
+    
+            foreach ($xml_race->RaceTable->Race->ResultsList->Result as $carrera) {
+                
+                echo 
+
+                        "<tr>".
+                            "<td>" . $carrera['position'] . "</td>" .
+                            "<td>" . $carrera->Driver->GivenName ." ". $carrera->Driver->FamilyName . "</td>" .
+                            "<td>" . $carrera->Time . "</td>" .
+                            "<td>" . $carrera->Status . "</td>" .
+                            "<td>" . $carrera['points'] . "</td>" .
+                        "</tr>";
+                        $tiempo_piloto = $carrera->FastestLap->Time['millis'];
+                        array_push($tiempos,$tiempo_piloto);
+                        
+                    }
+                
+                   
+                        echo $tiempos[1];
+                    
+                    
+         
+            
+        
+        ?>
+            </table>
         </div>
     </section>
 

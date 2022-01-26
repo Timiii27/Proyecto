@@ -60,9 +60,10 @@ button {
 .home-section {
     height:100vh;
     background-image: url("/images/fondo.jpg");
+    background-attachment: fixed;
+    background-position: center;
     background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;   
+    background-size: cover;
 }
 
 .card-1{
@@ -80,4 +81,25 @@ td{
 td span{
     font-family: FormulaBold;
 }
-
+.ranking{
+    height:100%;
+    background-image: url("/images/fondo_ranking.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+table{
+    background-color:rgba(145, 69, 69, 0.467);
+    
+}
+th,tr,td{
+    color: white;
+}
+.banner-ranking{
+    height:200px;
+    color: white;
+    background-color: rgba(51, 196, 196, 0.453);
+    
+}
+  
