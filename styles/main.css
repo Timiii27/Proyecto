@@ -32,6 +32,7 @@ nav{
 .nav-active{
     background-color:rgba(255, 255, 255, 0.788);
     backdrop-filter: blur(10px);
+    z-index: 1;
 
 }
 .nav-active a{
@@ -47,7 +48,7 @@ a {
 button:hover,a:hover{
     transform: translateY(-7px);
     transition: 0.3s ease-in;
-    background-color: red;
+    
     color: white;
 }
 
@@ -82,7 +83,7 @@ td span{
     font-family: FormulaBold;
 }
 .ranking{
-    height:100%;
+    min-height:100vh;
     background-image: url("/images/fondo_ranking.jpg");
     background-attachment: fixed;
     background-position: center;
@@ -91,6 +92,7 @@ td span{
 }
 table{
     background-color:rgba(145, 69, 69, 0.467);
+    transition: 5s ease-in-out;
     
 }
 th,tr,td{
@@ -100,6 +102,12 @@ th,tr,td{
     height:200px;
     color: white;
     background-color: rgba(51, 196, 196, 0.453);
-    
+    backdrop-filter: blur(10px);
+
 }
-  
+.banner-ranking button {
+    color: white;
+}
+.normas{
+    height:100vh;
+}
