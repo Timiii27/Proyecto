@@ -39,14 +39,14 @@
             <button><a href="/registros/register.php">Empezar a jugar!</a></button>
         </div>
     </section>
-    <div class="ranking d-flex flex-column justify-content-center align-items-center">
-        <div class="banner-ranking d-flex justify-content-around mb-5 align-items-center w-100">
+    <div class="ranking d-flex flex-column">
+        <div class="banner-ranking d-flex justify-content-around mb-5 align-items-center w-100 ">
             <button id="pilotos">Ranking de pilotos</button>
             <button id="constructores">Ranking de constructores</button>
             <button id="ultima-carrera">Ultima carrera</button>
         </div>
-
-            <div id="tabla1" class=" w-75">
+        <div class="d-flex justify-content-center align-items-center">
+            <div id="tabla1" class="w-75">
 
                 <table class="table table-bordered ">
                     <tr>
@@ -137,6 +137,8 @@
                     ?>
                 </table>
             </div>
+
+        </div>
 
 
        

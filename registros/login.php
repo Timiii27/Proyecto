@@ -1,5 +1,5 @@
 <?php include('db.php') ?>
-if
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

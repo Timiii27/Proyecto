@@ -16,10 +16,23 @@
 </head>
 <body>
     <form action="vote.php">
-        <select name="pos_1" id="">
-            <option value="ham">hamilton</option>
-            <option value="ver">verstappen</option>
-        </select>
+    <?php
+    
+    $xml_drivers = simplexml_load_file("../drivers.xml.cache");
+
+    for ($i=0; $i < 11; $i++) { 
+    
+        echo "<select name='pos_$i'>";
+                foreach ($xml_drivers->StandingsTable->StandingsList->DriverStanding as $driver){
+                            echo "<p>Posicion $i</p> <option value='$driver[code]'>".$driver->Driver->FamilyName."</option>";
+                            }
+                            
+        echo "</select><br>";
+        }
+        
+    ?>
+    
+    
     </form>
     <a href="logout.php">Logout</a>
 </body>
