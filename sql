@@ -1,6 +1,9 @@
-LOAD XML LOCAL INFILE "C:\\xampp\\htdocs\\last_race.xml.cache"
+LOAD XML LOCAL INFILE "C:\\xampp\\htdocs\\Proyecto\\last_race.xml.cache"
 INTO TABLE driver
-rows identified by '<Driver>'
+rows identified by '<Driver>';
+LOAD XML LOCAL INFILE "C:\\xampp\\htdocs\\Proyecto\\last_race.xml.cache"
+INTO TABLE lap
+rows identified by '<FastestLap>';
 CREATE TABLE `driver` (
        `season` char(4) DEFAULT NULL,
        `round` char(2) DEFAULT NULL,
@@ -11,7 +14,7 @@ CREATE TABLE `driver` (
        `PermanentNumber` char(2) DEFAULT NULL,
        `GivenName` varchar(50) DEFAULT NULL,
        `FamilyName` varchar(50) DEFAULT NULL,
-       `rank` char(2) DEFAULT NULL
+       
      ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `users` (
@@ -20,4 +23,4 @@ CREATE TABLE `users` (
   `email` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 |
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 ;
