@@ -13,7 +13,7 @@
 
 <body>
 
-    <nav id="nav" class="col-12 d-flex align-items-center justify-content-between nav-fixed">
+    <nav  class="col-12 d-flex align-items-center justify-content-between nav-fixed">
         <div class="d-flex col-4 justify-content-around align-items-center">
             <a href="#home"><img src="/images/f1logo.png" alt="logo" width="100px"></a>
         </div>
@@ -23,15 +23,16 @@
             <a href="#leaderbord">Reglas</a>
             <a href="/carreras/carreras.php">Carreras</a>
             <button>
-                <a href="/registros/logchoose.php">Login</a>
+                <a href="/registros/logchoose.php">Votar</a>
             </button>
             <button>
                 <a href="/registros/register.php">Register</a>
             </button>
         </div>
     </nav>
-    <section class="home-section d-flex  justify-content-center align-items-center flex-column ">
-        <div class="card-1 d-flex flex-column justify-content-center align-items-center">
+    
+    <section class="home-section d-flex justify-content-center align-items-center flex-column" id="home">
+        <div class="card-1 d-flex flex-column align-items-center">
             <h1>El mejor juego sobre la F1</h1>
             <p>Unete junto a otros jugadores alrededor de todo el mundo para poder disfrutar de un apasionante torneo a lo largo de la temporda de la Formula 1</p>
         </div>
@@ -39,13 +40,29 @@
             <button><a href="/registros/register.php">Empezar a jugar!</a></button>
         </div>
     </section>
-    <div class="ranking d-flex flex-column">
+    <div class="normas d-flex align-items-center justify-content-around ">
+        <div class="card">
+            
+            <p class="mt-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum sapiente sunt accusamus repellat quam, in quidem quae. Inventore sit itaque vero, omnis nesciunt nam! Nostrum harum necessitatibus animi repellat voluptates!</p>
+        </div>
+        <div class="card">
+            
+            <p class="mt-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum sapiente sunt accusamus repellat quam, in quidem quae. Inventore sit itaque vero, omnis nesciunt nam! Nostrum harum necessitatibus animi repellat voluptates!</p>
+        </div>
+        <div class="card">
+            
+            <p class="mt-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum sapiente sunt accusamus repellat quam, in quidem quae. Inventore sit itaque vero, omnis nesciunt nam! Nostrum harum necessitatibus animi repellat voluptates!</p>
+        </div>
+
+
+    </div>
+    <div class="ranking d-flex flex-column align-items-center">
         <div class="banner-ranking d-flex justify-content-around mb-5 align-items-center w-100 ">
             <button id="pilotos">Ranking de pilotos</button>
             <button id="constructores">Ranking de constructores</button>
             <button id="ultima-carrera">Ultima carrera</button>
         </div>
-        <div class="d-flex justify-content-center align-items-center">
+        <div class="d-flex w-100 align-items-center justify-content-center">
             <div id="tabla1" class="w-75">
 
                 <table class="table table-bordered ">
@@ -143,10 +160,9 @@
 
        
     </div>
-
-    <div class="normas">
-
-    </div>                
+    <footer class="footer d-flex justify-content-center">
+        <p>Copyright &copy; Tihomir Nikolaev</p>
+    </footer>
     <!-- Scripts -->
     <script src="/js/script.js"></script>
 </body>
