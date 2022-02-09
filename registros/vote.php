@@ -17,27 +17,28 @@
 
 </head>
 <body>
-    <form action="resultados.php" method="get">
+    <form class="d-grid justify-content-center align-items-center  vh-100" style="grid-template-columns:repeat(5,1fr)" action="resultados.php" method="get">
     <?php
         
         $xml_drivers = simplexml_load_file("../drivers.xml.cache");
 
+        
         for ($i=1; $i < 11; $i++) { 
             
-            echo "<select name='pos_$i'>";
+            echo "<select name='pos_$i' multiple='multiple' size='10'>";
                     foreach ($xml_drivers->StandingsTable->StandingsList->DriverStanding as $driver){
                                 echo '<option value="'.$driver->Driver['code'].'">'.$driver->Driver->FamilyName."</option>";
                                 }
  
-            echo "</select><br>";
-            }
+            echo "</select>";
+            } 
 
             ?>
-
-    <input type="submit" value="Enviar">
+    
+    <input  type="submit" value="Hacer votacion">
     </form>
 
     
-
+    <script src="vote.js"></script>
 </body>
 </html>

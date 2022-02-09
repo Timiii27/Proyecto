@@ -36,7 +36,7 @@
             <h1>El mejor juego sobre la F1</h1>
             <p>Unete junto a otros jugadores alrededor de todo el mundo para poder disfrutar de un apasionante torneo a lo largo de la temporda de la Formula 1</p>
         </div>
-        <div>
+        <div class="jugar">
             <button><a href="/registros/register.php">Empezar a jugar!</a></button>
         </div>
     </section>
@@ -65,7 +65,7 @@
         <div class="d-flex w-100 align-items-center justify-content-center">
             <div id="tabla1" class="w-75">
 
-                <table class="table table-bordered ">
+                <table class="table table-bordered">
                     <tr>
                         <th>Posicion</th>
                         <th>Piloto</th>
@@ -140,12 +140,11 @@
                             "<td>" . $carrera->Status . "</td>" .
                             "<td>" . $carrera['points'] . "</td>" .
                             "</tr>";
-                        $tiempo_piloto = $carrera->FastestLap->Time['millis'];
-                        array_push($tiempos, $tiempo_piloto);
+                      
                     }
 
 
-                    echo $tiempos[1];
+                   
 
 
 
