@@ -2,7 +2,7 @@
 
 session_start();
 if (isset($_SESSION['username'])) {
-    header("location: vote.php");
+    header("location: elegir.php");
 }else {
     header("location: login.php");   
 }

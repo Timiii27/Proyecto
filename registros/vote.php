@@ -17,25 +17,56 @@
 
 </head>
 <body>
-    <form class="d-grid justify-content-center align-items-center  vh-100" style="grid-template-columns:repeat(5,1fr)" action="resultados.php" method="get">
+    <form action="resultados.php" method="get">
     <?php
-        
-        $xml_drivers = simplexml_load_file("../drivers.xml.cache");
-
-        
-        for ($i=1; $i < 11; $i++) { 
+        echo "Bienvenido ".$_SESSION['username']." aqui podras realizar tu votacion sobre cada carrera<br>";
+        $fecha_limite = "16-02-2022 18:37:00";
+        if ($fecha_limite > date('d-m-Y H:i:s')) {
+            $xml_drivers = simplexml_load_file("../drivers.xml.cache");
             
-            echo "<select name='pos_$i' multiple='multiple' size='10'>";
-                    foreach ($xml_drivers->StandingsTable->StandingsList->DriverStanding as $driver){
-                                echo '<option value="'.$driver->Driver['code'].'">'.$driver->Driver->FamilyName."</option>";
-                                }
- 
-            echo "</select>";
+            
+            
+            for ($i=1; $i < 13; $i++) { 
+                if ($i == 1) {
+                    echo "Primero";
+                } elseif ($i == 2) {
+                    echo "Segundo";
+                } elseif ($i == 3) {
+                    echo "Tercero";
+                }elseif ($i == 4) {
+                    echo "Cuarto";
+                }elseif ($i == 5) {
+                    echo "Quinto";
+                }elseif ($i == 6) {
+                    echo "Sexto";
+                }elseif ($i == 7) {
+                    echo "Septimo";
+                }elseif ($i == 8) {
+                    echo "Octavo";
+                }elseif ($i == 9) {
+                    echo "Noveno";
+                }elseif ($i == 10) {
+                    echo "Decimo";
+                }elseif ($i == 11) {
+                    echo "Vuelta Rapida";
+                }elseif ($i == 12) {
+                    echo "DNF";
+                }
+                echo "<select name='pos_$i'  size='10' required>";
+                        foreach ($xml_drivers->StandingsTable->StandingsList->DriverStanding as $driver){
+                                    echo '<option value="'.$driver->Driver['code'].'" >'.$driver->Driver->FamilyName."</option>";
+                                    }
+                echo "</select>";
             } 
+            echo "<input  type='submit' value='Hacer votacion'>";
+            
+        }else {
+            echo "Te has quedado sin tiempo para votar";
+        }
 
             ?>
     
-    <input  type="submit" value="Hacer votacion">
+    <a href="logout.php">Salir</a>
     </form>
 
     
