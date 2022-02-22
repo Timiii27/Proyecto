@@ -74,9 +74,11 @@
                     </tr>
 
                     <?php
-                    $xml_drivers = simplexml_load_file("drivers.xml.cache");
+                    $json_decode_drivers = json_decode("drivers.json",true);
+                    print_r($json_decode_drivers);
+                    /* $xml_drivers = simplexml_load_file("drivers.xml.cache"); */
 
-                    foreach ($xml_drivers->StandingsTable->StandingsList->DriverStanding as $driver) {
+                    /* foreach ($xml_drivers->StandingsTable->StandingsList->DriverStanding as $driver) {
 
                         echo "<tr>" .
                             "<td>" . $driver['position'] . "</td>" .
@@ -84,7 +86,16 @@
                             "<td>" . $driver['wins'] .
                             "<td>" . $driver['points'] . "</td>" .
                             "</tr>";
-                    }
+                    } */
+                    /* foreach ($json_decode_drivers->StandingsTable->StandingsList->DriverStanding as $driver) {
+
+                        echo "<tr>" .
+                            "<td>" . $driver['position'] . "</td>" .
+                            "<td>" . $driver->Driver->GivenName . " " . "<span>" . $driver->Driver->FamilyName . "</span> </td>" .
+                            "<td>" . $driver['wins'] .
+                            "<td>" . $driver['points'] . "</td>" .
+                            "</tr>";
+                    } */
                     ?>
                 </table>
             </div>
@@ -99,9 +110,19 @@
                     </tr>
 
                     <?php
-                    $xml_constructors = simplexml_load_file("constructors.xml.cache");
+                    $json_decode_constructors = json_decode("constructors.json",true);
+                    /* $xml_constructors = simplexml_load_file("constructors.xml.cache"); */
 
-                    foreach ($xml_constructors->StandingsTable->StandingsList->ConstructorStanding as $constructor) {
+                    /* foreach ($json_decode_constructors->StandingsTable->StandingsList->ConstructorStanding as $constructor) {
+
+                        echo "<tr>" .
+                            "<td>" . $constructor['position'] . "</td>" .
+                            "<td><span>" . $constructor->Constructor->Name . "</span></td>" .
+                            "<td>" . $constructor['wins'] . "</td>" .
+                            "<td>" . $constructor['points'] . "</td>" .
+                            "</tr>";
+                    } */
+                    foreach ($json_decode_constructors->StandingsTable->StandingsList->ConstructorStanding as $constructor) {
 
                         echo "<tr>" .
                             "<td>" . $constructor['position'] . "</td>" .
@@ -125,11 +146,24 @@
                         <th>Puntos</th>
                     </tr>
                     <?php
-                    $tiempos = [];
+                    
+                    $json_decode_lr = json_decode("last_race.json",true);
+                    /* $xml_race = simplexml_load_file("last_race.xml.cache"); */
 
-                    $xml_race = simplexml_load_file("last_race.xml.cache");
+                    /* foreach ($xml_race->RaceTable->Race->ResultsList->Result as $carrera) {
 
-                    foreach ($xml_race->RaceTable->Race->ResultsList->Result as $carrera) {
+                        echo
+
+                        "<tr>" .
+                            "<td>" . $carrera['position'] . "</td>" .
+                            "<td>" . $carrera->Driver->GivenName . " " . $carrera->Driver->FamilyName . "</td>" .
+                            "<td>" . $carrera->Time . "</td>" .
+                            "<td>" . $carrera->Status . "</td>" .
+                            "<td>" . $carrera['points'] . "</td>" .
+                            "</tr>";
+                      
+                    } */
+                    foreach ($json_decode_lr->RaceTable->Race->ResultsList->Result as $carrera) {
 
                         echo
 

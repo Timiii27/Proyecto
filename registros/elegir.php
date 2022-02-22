@@ -1,6 +1,7 @@
 <?php include('db.php') ?>
 
 <?php 
+
   if (!isset($_SESSION['username'])) {
   	$_SESSION['msg'] = "You must log in first";
   	header('location: login.php');
@@ -15,7 +16,7 @@
     <title>Document</title>
 </head>
 <body>
-    <a href="vote.php">Votar Carrera</a>
-    <a href="vote.php">Votar Anual</a>
+    <a href="vote_carrera.php">Votar Carrera</a>
+    <a href="vote_anual.php">Votar Anual</a>
 </body>
 </html>

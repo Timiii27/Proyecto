@@ -1,6 +1,7 @@
 <?php include('db.php') ?>
 
 <?php 
+session_start();
   if (!isset($_SESSION['username'])) {
   	$_SESSION['msg'] = "You must log in first";
   	header('location: login.php');
@@ -16,13 +17,44 @@
     <title>Document</title>
 </head>
 <body>
+    
     <?php
-    $votacion_query = "Select pos1,pos2,pos3,pos4,pos5,pos6,pos7,pos8,pos9,pos10 from votaciones";
-    $carrera_query = "select code from carrera limit 10";
-    $resultado_votacion = mysqli_query($db, $votacion_query);
-    $resultado_carrera = mysqli_query($db, $carrera_query);
-    $puntos = 0;
-    echo array_values($resultado_carrera);
+      $stmt = mysqli_stmt_init($db);
+  
+      $votacion_query = "select pos1,pos2,pos3,pos4,pos5,pos6,pos7,pos8,pos9,pos10 from votaciones;";
+      if (mysqli_stmt_prepare($stmt,$votacion_query) ) {
+        
+      
+        
+        mysqli_stmt_execute($stmt);
+        
+        $resultado_votacion = mysqli_stmt_get_result($stmt);	
+        
+        
+        while ($row = mysqli_fetch_assoc($resultado_votacion)) {
+          for ($i=1; $i < 11; $i++) { 
+            echo $row["pos$i"]."<br>";
+          }
+        }
+      } 
+      $carrera_query = "select * from carrera limit 10;";
+      if (mysqli_stmt_prepare($stmt,$carrera_query)) {
+        
+     
+
+        mysqli_stmt_execute($stmt);
+       
+        	
+        $resultado_carrera = mysqli_stmt_get_result($stmt);	
+        while ($row2 = mysqli_fetch_assoc($resultado_carrera)) {
+         
+            echo $row2["code"]."<br>";
+         
+        }
+
+        
+      }
+
     ?>
 </body>
 </html>
