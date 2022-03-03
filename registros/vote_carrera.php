@@ -24,13 +24,15 @@
         $check_query = "SELECT * FROM votaciones where usuario='$_SESSION[username]';";
         $result = mysqli_query($db,$check_query);
         $fecha_actual = date('Y-m-d H:i:s');
-        $fecha_limite = "2022-02-22 19:20:00";
+        $fecha_limite = "2022-03-03 19:20:00";
         if(mysqli_num_rows($result) > 0){
            
             echo "Bienvenido ".$_SESSION['username']." aqui podras realizar tu votacion sobre cada carrera<br>";
             
-            if ($fecha_limite < date('d-m-Y H:i:s')) {
-                $xml_drivers = simplexml_load_file("../drivers.xml.cache");
+            if ($fecha_limite > $fecha_actual) {
+                error_reporting(0);
+                $datos_drivers = file_get_contents('../drivers.json');
+                $json_decode_drivers = json_decode($datos_drivers,true);
 
                 for ($i=1; $i < 13; $i++) { 
                     if ($i == 1) {
@@ -59,28 +61,31 @@
                         echo "DNF";
                     }
                     echo "<select name='pos_$i'  size='10' required>";
-                            foreach ($xml_drivers->StandingsTable->StandingsList->DriverStanding as $driver){
-                                        echo '<option value="'.$driver->Driver['code'].'" >'.$driver->Driver->FamilyName."</option>";
+                            foreach ($json_decode_drivers['StandingsTable']['StandingsList']['DriverStanding'] as $driver){
+                                        echo '<option value="'.$driver['Driver']['@attributes']['code'].'" >'.$driver['Driver']['FamilyName']."</option>";
                                         }
                     echo "</select>";
                 } 
-                echo "<input  type='submit' value='Hacer votacion'>";
+                echo "<input  type='submit' value='Hacer votacion'><br>";
                 
             }else {
-                echo "Te has quedado sin tiempo para votar";
+                echo "Te has quedado sin tiempo para votar <br>";
             }
                 foreach($result as $row){
                    for ($i=1; $i < 11; $i++) { 
-                       echo $row["pos$i"];
+                       echo $row["pos$i"]."<br>";
                    }
-                   echo $row["vr"];
-                   echo $row["dnf"];
+                   echo $row["vr"]."<br>";
+                   echo $row["dnf"]."<br>";
                 
             }
         }else {
             echo "Bienvenido ".$_SESSION['username']." aqui podras realizar tu votacion sobre cada carrera<br>";
-            if ($fecha_limite < date('d-m-Y H:i:s')) {
-                $xml_drivers = simplexml_load_file("../drivers.xml.cache");
+            if ($fecha_limite > $fecha_actual) {
+                error_reporting(0);
+                $datos_drivers = file_get_contents('../drivers.json');
+                $json_decode_drivers = json_decode($datos_drivers,true);
+
                 for ($i=1; $i < 13; $i++) { 
                     if ($i == 1) {
                         echo "Primero";
@@ -108,8 +113,8 @@
                         echo "DNF";
                     }
                     echo "<select name='pos_$i'  size='10' required>";
-                            foreach ($xml_drivers->StandingsTable->StandingsList->DriverStanding as $driver){
-                                        echo '<option value="'.$driver->Driver['code'].'" >'.$driver->Driver->FamilyName."</option>";
+                            foreach ($json_decode_drivers['StandingsTable']['StandingsList']['DriverStanding'] as $driver){
+                                        echo '<option value="'.$driver['Driver']['@attributes']['code'].'" >'.$driver['Driver']['FamilyName']."</option>";
                                         }
                     echo "</select>";
                 } 

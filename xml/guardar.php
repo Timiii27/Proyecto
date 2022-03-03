@@ -27,5 +27,7 @@ if(!file_exists($cache_last_race) || filemtime($cache_last_race) < time() + $age
 
   file_put_contents($cache_last_race, $json_last_race);
 }
-
+define('drivers', 'drivers.json'); 
+define('constructors', 'constructors.json'); 
+define('last_race', 'last_race.json'); 
 ?>

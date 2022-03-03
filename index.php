@@ -31,27 +31,35 @@
         </div>
     </nav>
     
-    <section class="home-section d-flex justify-content-center align-items-center flex-column" id="home">
-        <div class="card-1 d-flex flex-column align-items-center">
-            <h1>El mejor juego sobre la F1</h1>
-            <p>Unete junto a otros jugadores alrededor de todo el mundo para poder disfrutar de un apasionante torneo a lo largo de la temporda de la Formula 1</p>
+    <section class="home-section d-flex " id="home">
+        <div class="d-flex flex-column justify-content-center">
+            <div class="card-1 col-7 d-flex flex-column align-items-center">
+                <h1>El mejor juego sobre la F1</h1>
+                <p>Unete junto a otros jugadores alrededor de todo el mundo para poder disfrutar de un apasionante torneo a lo largo de la temporda de la Formula 1</p>
+            </div>
+            <div class="jugar">
+                <button><a href="/registros/register.php">Empezar a jugar!</a></button>
+            </div>
         </div>
-        <div class="jugar">
-            <button><a href="/registros/register.php">Empezar a jugar!</a></button>
+        <div class="col-5 d-flex align-items-center">
+            <img src="/images/fondo.jpg" alt="" height="400" srcset="">
         </div>
     </section>
-    <div class="normas d-flex align-items-center justify-content-around ">
-        <div class="card">
-            
-            <p class="mt-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum sapiente sunt accusamus repellat quam, in quidem quae. Inventore sit itaque vero, omnis nesciunt nam! Nostrum harum necessitatibus animi repellat voluptates!</p>
-        </div>
-        <div class="card">
-            
-            <p class="mt-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum sapiente sunt accusamus repellat quam, in quidem quae. Inventore sit itaque vero, omnis nesciunt nam! Nostrum harum necessitatibus animi repellat voluptates!</p>
-        </div>
-        <div class="card">
-            
-            <p class="mt-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum sapiente sunt accusamus repellat quam, in quidem quae. Inventore sit itaque vero, omnis nesciunt nam! Nostrum harum necessitatibus animi repellat voluptates!</p>
+    <div class="Reglas d-flex flex-column align-items-center justify-content-center p4">
+        <h1>Reglas</h1>
+        <div class="d-flex w-100 justify-content-around mt-5"> 
+            <div class="card">
+                <p>Regla 1 <img src="https://img.icons8.com/ios-glyphs/30/000000/rules.png"/> </p>
+                <p class="mt-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum sapiente sunt accusamus repellat quam, in quidem quae. Inventore sit itaque vero, omnis nesciunt nam! Nostrum harum necessitatibus animi repellat voluptates!</p>
+            </div>
+            <div class="card">
+                <p>Regla 2<img src="https://img.icons8.com/ios-glyphs/30/000000/rules.png"/></p>
+                <p class="mt-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum sapiente sunt accusamus repellat quam, in quidem quae. Inventore sit itaque vero, omnis nesciunt nam! Nostrum harum necessitatibus animi repellat voluptates!</p>
+            </div>
+            <div class="card">
+                <p>Regla 3<img src="https://img.icons8.com/ios-glyphs/30/000000/rules.png"/></p>
+                <p class="mt-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum sapiente sunt accusamus repellat quam, in quidem quae. Inventore sit itaque vero, omnis nesciunt nam! Nostrum harum necessitatibus animi repellat voluptates!</p>
+            </div>
         </div>
 
 
@@ -65,7 +73,7 @@
         <div class="d-flex w-100 align-items-center justify-content-center">
             <div id="tabla1" class="w-75">
 
-                <table class="table table-bordered">
+                <table class="table ">
                     <tr>
                         <th>Posicion</th>
                         <th>Piloto</th>
@@ -74,34 +82,28 @@
                     </tr>
 
                     <?php
-                    $json_decode_drivers = json_decode("drivers.json",true);
-                    print_r($json_decode_drivers);
+                    error_reporting(0);
+                    $datos_piloto = file_get_contents('drivers.json');
+                    $json_decode_drivers = json_decode($datos_piloto,true);
+                    
                     /* $xml_drivers = simplexml_load_file("drivers.xml.cache"); */
 
-                    /* foreach ($xml_drivers->StandingsTable->StandingsList->DriverStanding as $driver) {
+                    foreach ($json_decode_drivers['StandingsTable']['StandingsList']['DriverStanding'] as $driver) {
 
                         echo "<tr>" .
-                            "<td>" . $driver['position'] . "</td>" .
-                            "<td>" . $driver->Driver->GivenName . " " . "<span>" . $driver->Driver->FamilyName . "</span> </td>" .
-                            "<td>" . $driver['wins'] .
-                            "<td>" . $driver['points'] . "</td>" .
+                            "<td>" . $driver['@attributes']['position'] . "</td>" .
+                            "<td>" . $driver['Driver']['GivenName'] . " " . "<span>" . $driver['Driver']['FamilyName'] . "</span> </td>" .
+                            "<td>" . $driver['@attributes']['wins'] .
+                            "<td>" . $driver['@attributes']['points'] . "</td>" .
                             "</tr>";
-                    } */
-                    /* foreach ($json_decode_drivers->StandingsTable->StandingsList->DriverStanding as $driver) {
-
-                        echo "<tr>" .
-                            "<td>" . $driver['position'] . "</td>" .
-                            "<td>" . $driver->Driver->GivenName . " " . "<span>" . $driver->Driver->FamilyName . "</span> </td>" .
-                            "<td>" . $driver['wins'] .
-                            "<td>" . $driver['points'] . "</td>" .
-                            "</tr>";
-                    } */
+                    } 
+                    
                     ?>
                 </table>
             </div>
             <div id="tabla2" class="w-75 d-none ">
 
-                <table class="table table-bordered ">
+                <table class="table table-dashed ">
                     <tr>
                         <th>Posicion</th>
                         <th>Nombre</th>
@@ -110,32 +112,25 @@
                     </tr>
 
                     <?php
-                    $json_decode_constructors = json_decode("constructors.json",true);
+                    error_reporting(0);
+                    $datos_constructors = file_get_contents('constructors.json');
+                    $json_decode_constructors = json_decode($datos_constructors,true);
                     /* $xml_constructors = simplexml_load_file("constructors.xml.cache"); */
 
-                    /* foreach ($json_decode_constructors->StandingsTable->StandingsList->ConstructorStanding as $constructor) {
+                     foreach ($json_decode_constructors['StandingsTable']['StandingsList']['ConstructorStanding'] as $constructor) {
 
                         echo "<tr>" .
-                            "<td>" . $constructor['position'] . "</td>" .
-                            "<td><span>" . $constructor->Constructor->Name . "</span></td>" .
-                            "<td>" . $constructor['wins'] . "</td>" .
-                            "<td>" . $constructor['points'] . "</td>" .
+                            "<td>" . $constructor['@attributes']['position'] . "</td>" .
+                            "<td><span>" . $constructor['Constructor']['Name'] . "</span></td>" .
+                            "<td>" . $constructor['@attributes']['wins'] . "</td>" .
+                            "<td>" . $constructor['@attributes']['points'] . "</td>" .
                             "</tr>";
-                    } */
-                    foreach ($json_decode_constructors->StandingsTable->StandingsList->ConstructorStanding as $constructor) {
-
-                        echo "<tr>" .
-                            "<td>" . $constructor['position'] . "</td>" .
-                            "<td><span>" . $constructor->Constructor->Name . "</span></td>" .
-                            "<td>" . $constructor['wins'] . "</td>" .
-                            "<td>" . $constructor['points'] . "</td>" .
-                            "</tr>";
-                    }
+                     }
                     ?>
                 </table>
             </div>
             <div id="tabla3" class="w-75 d-none ">
-                <table class="table table-striped  table-bordered ">
+                <table class="table ">
                     <tr>
 
                         <th> Posicion</th>
@@ -146,42 +141,23 @@
                         <th>Puntos</th>
                     </tr>
                     <?php
+                    error_reporting(0);
+                    $datos_carrera = file_get_contents('last_race.json');
+                    $json_decode_lr = json_decode($datos_carrera,true);
                     
-                    $json_decode_lr = json_decode("last_race.json",true);
-                    /* $xml_race = simplexml_load_file("last_race.xml.cache"); */
-
-                    /* foreach ($xml_race->RaceTable->Race->ResultsList->Result as $carrera) {
+                    foreach ($json_decode_lr['RaceTable']['Race']['ResultsList']['Result'] as $carrera) {
 
                         echo
 
                         "<tr>" .
-                            "<td>" . $carrera['position'] . "</td>" .
-                            "<td>" . $carrera->Driver->GivenName . " " . $carrera->Driver->FamilyName . "</td>" .
-                            "<td>" . $carrera->Time . "</td>" .
-                            "<td>" . $carrera->Status . "</td>" .
-                            "<td>" . $carrera['points'] . "</td>" .
-                            "</tr>";
-                      
-                    } */
-                    foreach ($json_decode_lr->RaceTable->Race->ResultsList->Result as $carrera) {
-
-                        echo
-
-                        "<tr>" .
-                            "<td>" . $carrera['position'] . "</td>" .
-                            "<td>" . $carrera->Driver->GivenName . " " . $carrera->Driver->FamilyName . "</td>" .
-                            "<td>" . $carrera->Time . "</td>" .
-                            "<td>" . $carrera->Status . "</td>" .
-                            "<td>" . $carrera['points'] . "</td>" .
+                            "<td>" . $carrera['@attributes']['position'] . "</td>" .
+                            "<td>" . $carrera['Driver']['GivenName'] . " " . $carrera['Driver']['FamilyName'] . "</td>" .
+                            "<td>" . $carrera['FastestLap']['Time'] . "</td>" .
+                            "<td>" . $carrera['Status'] . "</td>" .
+                            "<td>" . $carrera['@attributes']['points'] . "</td>" .
                             "</tr>";
                       
                     }
-
-
-                   
-
-
-
 
 
                     ?>

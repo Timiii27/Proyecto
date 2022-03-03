@@ -17,6 +17,7 @@
 </head>
 <body>
     <a href="vote_carrera.php">Votar Carrera</a>
-    <a href="vote_anual.php">Votar Anual</a>
+    <a href="vote_anual_constructores.php">Votar Constructores</a>
+    <a href="vote_anual_pilotos.php">Votar Pilotos</a>
 </body>
 </html>

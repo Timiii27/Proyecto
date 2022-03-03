@@ -20,21 +20,23 @@
   }
 body{
     font-family: FormulaBold ;
+   
 }
 nav{
-    height: 5.5rem;
+    height: 6rem;
     position: fixed;
     font-family: FormulaRegular ;
-    backdrop-filter: blur(20px);
-    background-color:rgb(255, 255, 255);
+    backdrop-filter: blur(4px);
+    background-color:rgba(79, 165, 204, 0.419);
     width:100%;
+    font-size: 1.3rem; 
     z-index: 1;
 }
  
 a {
     color: black ;
     text-decoration: none; 
-    font-size: 1.2rem;  
+     
 }
 button:hover,a:hover{
     transform: translateY(-7px);
@@ -45,31 +47,37 @@ button:hover,a:hover{
 button {
     border-radius: 10px;
     background-color: transparent;
-    border: 2px solid rgb(0, 0, 0);
+    /* border: 2px solid rgb(0, 0, 0); */
 }
 
 .home-section {
-    height:100vh;
-    background-image: url("/images/fondo.jpg");
+    height:80vh;
+    padding-left:70px;
+    padding-right:70px ;
+   /*  background-image: url("/images/fondo.jpg");
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover; */
 }
+
+
 .jugar button{
     color: white;
+    margin-left:11rem;
 }
 .card-1{
-    color: white;
+    color: rgb(0, 0, 0);
     padding:20px;
     border-radius: 40px;
+    margin-left:10rem;
 }
 .card-1 h1{
-    font-size: 4rem;
+    font-size: 3rem;
     
 }
 .card-1 p{
-    font-size: 1.4rem;
+    font-size: 1rem;
     
 }
 td{
@@ -80,35 +88,42 @@ td span{
 }
 .ranking{
     min-height:100vh;
-
+    padding-left:70px;
+    padding-right:70px ;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
-table{
-    background-color:rgb(253, 0, 0);
-    transition: 5s ease-in-out;
-    
-}
+ 
+
 th,tr,td{
-    color: white;
+    color: rgb(0, 0, 0);
+    border: 1px solid rgb(0, 0, 0);
 }
 .banner-ranking{
-    height:200px;
-    color: white;
+    height:100px;
+   
     background-color: rgb(0, 0, 0);
     backdrop-filter: blur(10px);
 
 }
 .banner-ranking button {
+    
     color: white;
+    border:0;
+    border-radius: 0;
+    border-bottom: 1px solid ;
+
 }
-.normas{
-    height:100vh;
+.Reglas{
+    height:70vh;
+    padding-left:70px;
+    padding-right:70px ;
+    margin-bottom:200px;
 }
 .card{
-    height:100px;
-    width:300px;
+    border:0;
+    width:400px;
     letter-spacing: 4px;
 }
