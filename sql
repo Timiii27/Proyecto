@@ -1,4 +1,4 @@
-LOAD XML LOCAL INFILE "C:\\xampp\\htdocs\\last_race.xml.cache"
+LOAD XML LOCAL INFILE "C:\\xampp\\htdocs\\last_race.json"
 INTO TABLE carrera
 rows identified by '<Driver>';
 LOAD XML LOCAL INFILE "C:\\xampp\\htdocs\\last_race.xml.cache"

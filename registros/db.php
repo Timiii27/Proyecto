@@ -60,8 +60,8 @@ if (isset($_POST['submit'])) {
 
   	$query = "INSERT INTO users (username, email, password) VALUES('$username', '$email', '$password')";
   	mysqli_query($db, $query);
-  	$query = "INSERT INTO users_puntos (username) VALUES('$username')";
-  	mysqli_query($db, $query);
+  	/* $query = "INSERT INTO users_puntos (username) VALUES('$username')";
+  	mysqli_query($db, $query); */
   	$_SESSION['username'] = $username;
     
   	header('location: login.php');

@@ -24,7 +24,7 @@
         $check_query = "SELECT * FROM votaciones where usuario='$_SESSION[username]';";
         $result = mysqli_query($db,$check_query);
         $fecha_actual = date('Y-m-d H:i:s');
-        $fecha_limite = "2022-03-03 19:20:00";
+        $fecha_limite = "2022-03-06 19:20:00";
         if(mysqli_num_rows($result) > 0){
            
             echo "Bienvenido ".$_SESSION['username']." aqui podras realizar tu votacion sobre cada carrera<br>";

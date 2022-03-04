@@ -19,5 +19,7 @@
     <a href="vote_carrera.php">Votar Carrera</a>
     <a href="vote_anual_constructores.php">Votar Constructores</a>
     <a href="vote_anual_pilotos.php">Votar Pilotos</a>
+    
+    <a href="recuento.php">Recuento</a>
 </body>
 </html>

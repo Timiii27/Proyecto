@@ -45,25 +45,6 @@
             <img src="/images/fondo.jpg" alt="" height="400" srcset="">
         </div>
     </section>
-    <div class="Reglas d-flex flex-column align-items-center justify-content-center p4">
-        <h1>Reglas</h1>
-        <div class="d-flex w-100 justify-content-around mt-5"> 
-            <div class="card">
-                <p>Regla 1 <img src="https://img.icons8.com/ios-glyphs/30/000000/rules.png"/> </p>
-                <p class="mt-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum sapiente sunt accusamus repellat quam, in quidem quae. Inventore sit itaque vero, omnis nesciunt nam! Nostrum harum necessitatibus animi repellat voluptates!</p>
-            </div>
-            <div class="card">
-                <p>Regla 2<img src="https://img.icons8.com/ios-glyphs/30/000000/rules.png"/></p>
-                <p class="mt-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum sapiente sunt accusamus repellat quam, in quidem quae. Inventore sit itaque vero, omnis nesciunt nam! Nostrum harum necessitatibus animi repellat voluptates!</p>
-            </div>
-            <div class="card">
-                <p>Regla 3<img src="https://img.icons8.com/ios-glyphs/30/000000/rules.png"/></p>
-                <p class="mt-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum sapiente sunt accusamus repellat quam, in quidem quae. Inventore sit itaque vero, omnis nesciunt nam! Nostrum harum necessitatibus animi repellat voluptates!</p>
-            </div>
-        </div>
-
-
-    </div>
     <div class="ranking d-flex flex-column align-items-center">
         <div class="banner-ranking d-flex justify-content-around mb-5 align-items-center w-100 ">
             <button id="pilotos">Ranking de pilotos</button>
@@ -169,6 +150,26 @@
 
        
     </div>
+    <div class="Reglas d-flex flex-column align-items-center justify-content-center p4">
+        <h1>Reglas</h1>
+        <div class="d-flex w-100 justify-content-around mt-5"> 
+            <div class="card">
+                <p>Regla 1 <img src="https://img.icons8.com/ios-glyphs/30/000000/rules.png"/> </p>
+                <p class="mt-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum sapiente sunt accusamus repellat quam, in quidem quae. Inventore sit itaque vero, omnis nesciunt nam! Nostrum harum necessitatibus animi repellat voluptates!</p>
+            </div>
+            <div class="card">
+                <p>Regla 2<img src="https://img.icons8.com/ios-glyphs/30/000000/rules.png"/></p>
+                <p class="mt-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum sapiente sunt accusamus repellat quam, in quidem quae. Inventore sit itaque vero, omnis nesciunt nam! Nostrum harum necessitatibus animi repellat voluptates!</p>
+            </div>
+            <div class="card">
+                <p>Regla 3<img src="https://img.icons8.com/ios-glyphs/30/000000/rules.png"/></p>
+                <p class="mt-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum sapiente sunt accusamus repellat quam, in quidem quae. Inventore sit itaque vero, omnis nesciunt nam! Nostrum harum necessitatibus animi repellat voluptates!</p>
+            </div>
+        </div>
+        
+        
+    </div>
+    
     <footer class="footer d-flex justify-content-center">
         <p>Copyright &copy; Tihomir Nikolaev</p>
     </footer>

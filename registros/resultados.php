@@ -38,7 +38,6 @@
       where usuario='$_SESSION[username]';";
       $resultado_votacion = mysqli_query($db, $votacion_query);
     }else {
-      
       $votacion_query = "INSERT into votaciones (usuario,pos1,pos2,pos3,pos4,pos5,pos6,pos7,pos8,pos9,pos10,vr,dnf) 
       values ('$_SESSION[username]','$posicion1','$posicion2','$posicion3','$posicion4','$posicion5','$posicion6','$posicion7','$posicion8','$posicion9','$posicion10','$posicion11','$posicion12')";
       $resultado_votacion = mysqli_query($db, $votacion_query);
