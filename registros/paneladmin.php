@@ -390,11 +390,7 @@
                                    
                                    
                                 
-                            /*     echo "<td>".$quali_1['pos1']."</td>
-                                <td>".$quali_1['pos5']."</td>
-                                <td>". $quali_1['pos10']."</td>
-                                <td>".$quali_1['pos15']."</td>
-                                <td>".$quali_1['pos20']."</td>"; */
+                       
                                 
                                 echo "<td>".$puntos."</td>";
                                 $puntos_update = "update users set puntos=puntos+$puntos where username='$usuario[usuario]';";

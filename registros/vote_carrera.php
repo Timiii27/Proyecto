@@ -24,16 +24,17 @@
         $check_query = "SELECT * FROM votaciones where usuario='$_SESSION[username]';";
         $result = mysqli_query($db,$check_query);
         $fecha_actual = date('Y-m-d H:i:s');
-        $fecha_limite = "2022-03-18 19:23:00";
+        $fecha_limite = "2022-03-19 23:59:00";
        
            
             echo "Bienvenido ".$_SESSION['username']." aqui podras realizar tu votacion sobre cada carrera<br>";
-            
+            echo "La fecha limite es el $fecha_limite";
             if ($fecha_limite > $fecha_actual) {
                 error_reporting(0);
                 $datos_drivers = file_get_contents('../drivers.json');
                 $json_decode_drivers = json_decode($datos_drivers,true);
-
+                $datos_constructors = file_get_contents('../constructors.json');
+                $json_decode_constructors = json_decode($datos_constructors,true);
                 for ($i=1; $i < 14; $i++) { 
                     if ($i == 1) {
                         echo "Primero";
@@ -61,6 +62,8 @@
                         echo "DNF";
                     }elseif ($i == 13) {
                         echo "Adelantamientos";
+                    }elseif ($i == 14) {
+                        echo "Cuarto Equipo";
                     }
                     echo "<select name='pos_$i'  size='10' required>";
                             foreach ($json_decode_drivers['StandingsTable']['StandingsList']['DriverStanding'] as $driver){
@@ -68,6 +71,13 @@
                                         }
                     echo "</select>";
                 } 
+                echo "Cuarto Equipo";
+                echo "<select name='cuarto_equipo'  size='10' required>";
+                foreach ($json_decode_constructors['StandingsTable']['StandingsList']['ConstructorStanding'] as $constructor){
+                    echo '<option value="'.$constructor['Constructor']['@attributes']['constructorId'].'">'.$constructor['Constructor']['Name']."</option>";
+                        
+                } 
+                echo "</select>";
                 echo "<input  type='submit' value='Hacer votacion'><br>";
                 
                 if(mysqli_num_rows($result) > 0){
