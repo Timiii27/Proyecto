@@ -18,49 +18,33 @@
 
 </head>
 <body>
-    <h3 id="clock"></h3>
-    <form action="resultados.php" method="get">
+   
+    <form action="quali.php" method="get">
     <?php
-        $check_query = "SELECT * FROM votaciones where usuario='$_SESSION[username]';";
-        $result = mysqli_query($db,$check_query);
+        /* $check_query = "SELECT * FROM votacion_quali where usuario='$_SESSION[username]';";
+        $result = mysqli_query($db,$check_query); */
         $fecha_actual = date('Y-m-d H:i:s');
         $fecha_limite = "2022-03-18 19:23:00";
        
            
-            echo "Bienvenido ".$_SESSION['username']." aqui podras realizar tu votacion sobre cada carrera<br>";
+            echo "Bienvenido ".$_SESSION['username']." aqui podras realizar tu votacion sobre cada quali<br>";
             
             if ($fecha_limite > $fecha_actual) {
                 error_reporting(0);
                 $datos_drivers = file_get_contents('../drivers.json');
                 $json_decode_drivers = json_decode($datos_drivers,true);
 
-                for ($i=1; $i < 14; $i++) { 
+                for ($i=1; $i < 6; $i++) { 
                     if ($i == 1) {
                         echo "Primero";
                     } elseif ($i == 2) {
-                        echo "Segundo";
-                    } elseif ($i == 3) {
-                        echo "Tercero";
-                    }elseif ($i == 4) {
-                        echo "Cuarto";
-                    }elseif ($i == 5) {
                         echo "Quinto";
-                    }elseif ($i == 6) {
-                        echo "Sexto";
-                    }elseif ($i == 7) {
-                        echo "Septimo";
-                    }elseif ($i == 8) {
-                        echo "Octavo";
-                    }elseif ($i == 9) {
-                        echo "Noveno";
-                    }elseif ($i == 10) {
+                    } elseif ($i == 3) {
                         echo "Decimo";
-                    }elseif ($i == 11) {
-                        echo "Vuelta Rapida";
-                    }elseif ($i == 12) {
-                        echo "DNF";
-                    }elseif ($i == 13) {
-                        echo "Adelantamientos";
+                    }elseif ($i == 4) {
+                        echo "Decimoquinto";
+                    }elseif ($i == 5) {
+                        echo "Vigesimo";
                     }
                     echo "<select name='pos_$i'  size='10' required>";
                             foreach ($json_decode_drivers['StandingsTable']['StandingsList']['DriverStanding'] as $driver){
@@ -72,12 +56,11 @@
                 
                 if(mysqli_num_rows($result) > 0){
                     foreach($result as $row){
-                        for ($i=1; $i < 11; $i++) { 
-                            echo $row["pos$i"]."<br>";
-                        }
-                        echo $row["vr"]."<br>";
-                        echo $row["dnf"]."<br>";
-                        
+                        echo $row['pos1'];
+                        echo $row['pos5'];
+                        echo $row['pos10'];
+                        echo $row['pos15'];
+                        echo $row['pos20'];
                     }
                 }
             }else {

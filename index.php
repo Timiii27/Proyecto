@@ -1,4 +1,5 @@
 <?php include 'xml/guardar.php' ?>
+<?php include 'registros/db.php' ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,15 +14,15 @@
 
 <body>
 
-    <nav  class="col-12 d-flex align-items-center justify-content-between nav-fixed">
+    <nav  class="col-12 d-flex align-items-center justify-content-between nav-fixed" id="nav">
         <div class="d-flex col-4 justify-content-around align-items-center">
             <a href="#home"><img src="/images/f1logo.png" alt="logo" width="100px"></a>
         </div>
         <div class="d-flex col-8 justify-content-evenly">
             <a href="#ranking">Rankings</a>
             <a href="#leaderbord">Leaderboard</a>
-            <a href="#leaderbord">Reglas</a>
-            <a href="/carreras/carreras.php">Carreras</a>
+            <a href="#reglas">Reglas</a>
+            
             <button>
                 <a href="/registros/logchoose.php">Votar</a>
             </button>
@@ -31,28 +32,32 @@
         </div>
     </nav>
     
-    <section class="home-section d-flex " id="home">
-        <div class="d-flex flex-column justify-content-center">
-            <div class="card-1 col-7 d-flex flex-column align-items-center">
-                <h1>El mejor juego sobre la F1</h1>
+    <section class="home-section d-flex container" id="home">
+        <div class="w-100 d-flex flex-column justify-content-center align-items-center">
+            <div class="card-1 d-flex flex-column justify-content-center text-center">
+                
+                <h1>El mejor juego<br> sobre la F1</h1>
                 <p>Unete junto a otros jugadores alrededor de todo el mundo para poder disfrutar de un apasionante torneo a lo largo de la temporda de la Formula 1</p>
-            </div>
-            <div class="jugar">
                 <button><a href="/registros/register.php">Empezar a jugar!</a></button>
             </div>
+            <div id="contador" class="d-flex">
+                
+                
+            </div>
         </div>
-        <div class="col-5 d-flex align-items-center">
-            <img src="/images/fondo.jpg" alt="" height="400" srcset="">
-        </div>
+       
+            
+       
     </section>
-    <div class="ranking d-flex flex-column align-items-center">
+    <div class="ranking d-flex flex-column align-items-center" id="ranking">
         <div class="banner-ranking d-flex justify-content-around mb-5 align-items-center w-100 ">
             <button id="pilotos">Ranking de pilotos</button>
             <button id="constructores">Ranking de constructores</button>
             <button id="ultima-carrera">Ultima carrera</button>
+            <button id="leaderboard">Ultima carrera</button>
         </div>
         <div class="d-flex w-100 align-items-center justify-content-center">
-            <div id="tabla1" class="w-75">
+            <div id="tabla1" class="w-75 ">
 
                 <table class="table ">
                     <tr>
@@ -82,7 +87,7 @@
                     ?>
                 </table>
             </div>
-            <div id="tabla2" class="w-75 d-none ">
+            <div id="tabla2" class="w-75 d-none border border-dark"">
 
                 <table class="table table-dashed ">
                     <tr>
@@ -144,26 +149,57 @@
                     ?>
                 </table>
             </div>
+            <div id="tabla4" class="w-75 d-none ">
+                <table class="table ">
+                    <tr>
+
+                        <th> Usuario</th>
+                       
+                        <th>Puntos</th>
+                        
+                    </tr>
+                    <?php
+                    
+                
+                    $array_jugadores="select username,puntos from users where username not like 'admin'";
+                    $usuarios = mysqli_query($db,$array_jugadores);
+                    
+                   
+                          
+                    foreach ($usuarios as $usuario){
+                        echo "<tr><td>".$usuario['username']."</td>"."<td>".$usuario['puntos']."</td></tr>";
+                    }
+                                  
+                    
+
+
+                    ?>
+                </table>
+            </div>
 
         </div>
 
 
        
     </div>
-    <div class="Reglas d-flex flex-column align-items-center justify-content-center p4">
-        <h1>Reglas</h1>
+    <div class="reglas d-flex flex-column align-items-center justify-content-center p4" id="reglas">
+        <h1>Reglas Y Sistema de Puntacion</h1>
         <div class="d-flex w-100 justify-content-around mt-5"> 
             <div class="card">
                 <p>Regla 1 <img src="https://img.icons8.com/ios-glyphs/30/000000/rules.png"/> </p>
-                <p class="mt-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum sapiente sunt accusamus repellat quam, in quidem quae. Inventore sit itaque vero, omnis nesciunt nam! Nostrum harum necessitatibus animi repellat voluptates!</p>
+                <p class="mt-5">Las votaciones de las carreras y las clasificaciones se cerraran 30 minutos antes de que empiece cada evento respectivamente, una vez se cierra la votacion no podras sumar puntos en dicho evento</p>
             </div>
             <div class="card">
                 <p>Regla 2<img src="https://img.icons8.com/ios-glyphs/30/000000/rules.png"/></p>
-                <p class="mt-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum sapiente sunt accusamus repellat quam, in quidem quae. Inventore sit itaque vero, omnis nesciunt nam! Nostrum harum necessitatibus animi repellat voluptates!</p>
+                <p class="mt-5">Solo se podra crear una cuenta por persona, la persona que cree mas de una cuenta quedara descalificada y sin opción a volver a participar durante el resto de la temporada de competición</p>
             </div>
             <div class="card">
-                <p>Regla 3<img src="https://img.icons8.com/ios-glyphs/30/000000/rules.png"/></p>
-                <p class="mt-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum sapiente sunt accusamus repellat quam, in quidem quae. Inventore sit itaque vero, omnis nesciunt nam! Nostrum harum necessitatibus animi repellat voluptates!</p>
+                <p>Info Puntuacion Carrera</p>
+                <p class="mt-5"></p>
+            </div>
+            <div class="card">
+                <p>Info Puntuacion Quali</p>
+                <p class="mt-5"></p>
             </div>
         </div>
         
@@ -175,6 +211,8 @@
     </footer>
     <!-- Scripts -->
     <script src="/js/script.js"></script>
+    <script src="/js/simplyCountdown.min.js"></script>
+    <script src="/js/countdown.js"></script>
 </body>
 
 </html>

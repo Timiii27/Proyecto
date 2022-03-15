@@ -20,28 +20,42 @@
   }
 body{
     font-family: FormulaBold ;
+    background-color: #000000;
+    background: #000000; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #000000, #434343); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #000000, #434343); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
    
 }
+
 nav{
-    height: 6rem;
+     height: 6rem;
     position: fixed;
     font-family: FormulaRegular ;
-    backdrop-filter: blur(4px);
-    background-color:rgba(79, 165, 204, 0.419);
+    
+    
     width:100%;
     font-size: 1.3rem; 
     z-index: 1;
+} 
+
+.scroll{
+    background-color: rgba(252, 252, 252, 0.788);
+    transition:0.4s ease-in;
+    backdrop-filter: blur(4px);
 }
- 
+.scroll a{
+    color: black;
+}
 a {
-    color: black ;
+    color: rgb(255, 255, 255) ;
     text-decoration: none; 
      
 }
+
 button:hover,a:hover{
     transform: translateY(-7px);
     transition: 0.3s ease-in;   
-    color: rgb(0, 0, 0);
+    color: rgb(223, 201, 201);
 }
 
 button {
@@ -54,6 +68,7 @@ button {
     height:80vh;
     padding-left:70px;
     padding-right:70px ;
+    
    /*  background-image: url("/images/fondo.jpg");
     background-attachment: fixed;
     background-position: center;
@@ -61,21 +76,29 @@ button {
     background-size: cover; */
 }
 
-
 .jugar button{
     color: white;
-    margin-left:11rem;
-}
-.card-1{
-    color: rgb(0, 0, 0);
-    padding:20px;
-    border-radius: 40px;
-    margin-left:10rem;
-}
-.card-1 h1{
-    font-size: 3rem;
     
 }
+.card-1{
+    color:white;
+    padding:50px;
+    line-height: 30px;
+    border-radius: 10px;
+ 
+}
+
+.card-1 h1{
+    font-size: 5rem;
+    width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typing 5s forwards;
+}
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
 .card-1 p{
     font-size: 1rem;
     
@@ -88,17 +111,16 @@ td span{
 }
 .ranking{
     min-height:100vh;
-    padding-left:70px;
-    padding-right:70px ;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+
 }
  
-
+table{
+    margin-top:20px;
+    text-align:center;
+}   
 th,tr,td{
     color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
     border: 1px solid rgb(0, 0, 0);
 }
 .banner-ranking{
@@ -116,14 +138,41 @@ th,tr,td{
     border-bottom: 1px solid ;
 
 }
-.Reglas{
+.reglas{
     height:70vh;
     padding-left:70px;
     padding-right:70px ;
-    margin-bottom:200px;
+    
+}
+.reglas h1 {
+    color: white;
 }
 .card{
     border:0;
+    border-radius: 40px;
     width:400px;
     letter-spacing: 4px;
+    padding:40px;
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    
+}
+.simply-days-section,.simply-hours-section,.simply-minutes-section,.simply-seconds-section{
+   
+    margin: 10px;
+    padding: 50px;
+    
+    
+    background-color:white;
+}
+.simply-days-section span,.simply-hours-section span,.simply-minutes-section span,.simply-seconds-section span{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    flex-direction: column;
+}
+.simply-amount{
+    font-size: 40px;
+}
+.simply-word{
+    font-family: FormulaRegular ;   
 }

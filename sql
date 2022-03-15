@@ -36,7 +36,16 @@ CREATE TABLE `votaciones` (
 
  
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
-select c.round,c.number,c.points,c.code,v.Time,v.rank from carrera c,vuelta v where c.number=v.number;
+CREATE TABLE `votacion_quali` (
+  `usuario` varchar(100) NOT NULL ,
+  `pos1` char(3) NOT NULL,
+  `pos5` char(3) NOT NULL,
+  `pos10` char(3) NOT NULL,
+  `pos15` char(3) NOT NULL,
+  `pos20` char(3) NOT NULL
+ 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+
 create table votacion_anual_constructores(
   username varchar(100) primary key,
   mercedes decimal(5,2) not null,
@@ -72,4 +81,25 @@ create table votacion_anual_pilotos(
   latifi decimal(5,2) not null,
   schumacher decimal(5,2) not null,
   mazepin decimal(5,2) not null
-  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;+
+CREATE TABLE `quali` (
+       `posicion` int(11),
+       `number` int(11) NOT NULL primary key,
+       `driverId` varchar(100) DEFAULT NULL,
+       `code` char(3) DEFAULT NULL,
+       `constructor` varchar(50),
+       Foreign Key (number) references carrera(number) on delete cascade
+
+     ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+CREATE TABLE `carrera` (
+      `number` int(11)  COLLATE utf8_unicode_ci NOT NULL,
+      `posicion` int(11) DEFAULT NULL,
+      `driverId` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+      `code` char(3) COLLATE utf8_unicode_ci DEFAULT NULL,
+      `estado` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+      `posicion_vuelta` int(11) DEFAULT NULL,
+      `constructor` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+      PRIMARY KEY (`number`) 
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+select (q.posicion - c.posicion) as num,c.driverId from quali q,carrera c where c.number=q.number order by num desc;

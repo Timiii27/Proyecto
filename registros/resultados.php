@@ -18,6 +18,7 @@
     $posicion10 = $_GET["pos_10"];
     $posicion11 = $_GET["pos_11"];
     $posicion12 = $_GET["pos_12"];
+    $posicion13 = $_GET["pos_13"];
     
     $check_query = "SELECT * FROM votaciones where usuario='$_SESSION[username]';";
     $resultado_votacion = mysqli_query($db,$check_query);
@@ -34,12 +35,13 @@
       pos9='$posicion9',
       pos10='$posicion10',
       vr='$posicion11',
-      dnf='$posicion12'
+      dnf='$posicion12',
+      adelantamientos='$posicion13'
       where usuario='$_SESSION[username]';";
       $resultado_votacion = mysqli_query($db, $votacion_query);
     }else {
-      $votacion_query = "INSERT into votaciones (usuario,pos1,pos2,pos3,pos4,pos5,pos6,pos7,pos8,pos9,pos10,vr,dnf) 
-      values ('$_SESSION[username]','$posicion1','$posicion2','$posicion3','$posicion4','$posicion5','$posicion6','$posicion7','$posicion8','$posicion9','$posicion10','$posicion11','$posicion12')";
+      $votacion_query = "INSERT into votaciones (usuario,pos1,pos2,pos3,pos4,pos5,pos6,pos7,pos8,pos9,pos10,vr,dnf,adelantamientos) 
+      values ('$_SESSION[username]','$posicion1','$posicion2','$posicion3','$posicion4','$posicion5','$posicion6','$posicion7','$posicion8','$posicion9','$posicion10','$posicion11','$posicion12','$posicion13')";
       $resultado_votacion = mysqli_query($db, $votacion_query);
     }
     header("Location:elegir.php")
