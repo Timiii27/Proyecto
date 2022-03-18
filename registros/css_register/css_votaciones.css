@@ -19,7 +19,7 @@
   }
 body{
   font-family: FormulaRegular ;
-  height: 100vh;
+  height: 100%;
    background-color: #000000;
     background: #000000; /* fallback for old browsers */
     background: -webkit-linear-gradient(to bottom, #000000, #434343); /* Chrome 10-25, Safari 5.1-6 */
@@ -98,16 +98,34 @@ option{
   font-family: FormulaBold;
 }
 option:nth-child(1),option:nth-child(6){
-  color: rgb(36, 152, 219);
+  color: #005AFF		;
 }
 
 option:nth-child(2),option:nth-child(10){
-  color: rgb(204, 67, 151);
+  color: #FD4BC7	;
 }
 
 option:nth-child(20),option:nth-child(3){
-  color: rgb(196, 60, 60);
+  color: #900000	
 }
 option:nth-child(4),option:nth-child(17){
-  color: rgb(78, 62, 62);
+  color: #2B4562
+}
+option:nth-child(5),option:nth-child(13){
+  color: #00D2BE	;
+}
+option:nth-child(7),option:nth-child(14){
+  color: #DC0000		;
+}
+option:nth-child(8),option:nth-child(15){
+  color: #FFFFFF		;
+}
+option:nth-child(9),option:nth-child(12){
+  color: #FF8700		;
+}
+option:nth-child(11),option:nth-child(18){
+  color: #0600EF			;
+}
+option:nth-child(16),option:nth-child(19){
+  color: #006F62				;
 }

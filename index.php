@@ -26,18 +26,18 @@
         <?php 
         
         if (isset($_SESSION['username'])) {
-            echo "<button>
-            <a href='/registros/logchoose.php'>Votar</a>
+            echo "<a href='/registros/logchoose.php'><button>
+            Votar</button></a>
             </button><span class='welcome'>Bienvenido $_SESSION[username]</span>";
             
            
         }else{
-            echo "<button>
-            <a href='/registros/logchoose.php'>Votar</a>
-        </button>
-        <button>
-            <a href='/registros/register.php'>Registro</a>
-        </button>";
+            echo "<a href='/registros/logchoose.php'><button>
+            Votar
+        </button></a>
+        <a href='/registros/register.php'><button>
+           Registro
+        </button></a>";
         }
         ?>
         </div>
@@ -49,7 +49,11 @@
                 
                 <h1>El mejor juego<br> sobre la F1</h1>
                 <p>Unete junto a otros jugadores alrededor de todo el mundo para poder disfrutar de un apasionante torneo a lo largo de la temporda de la Formula 1</p>
-                <button><a href="/registros/register.php">Empezar a jugar!</a></button>
+                <a href="/registros/register.php" >
+                <button class="w-100">
+                        Empezar a jugar!
+                    </button>
+                </a>
             </div>
             <div id="contador" class="d-flex">
                 
