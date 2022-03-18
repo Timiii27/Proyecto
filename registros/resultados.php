@@ -46,7 +46,7 @@
       values ('$_SESSION[username]','$posicion1','$posicion2','$posicion3','$posicion4','$posicion5','$posicion6','$posicion7','$posicion8','$posicion9','$posicion10','$posicion11','$posicion12','$posicion13','$posicion14')";
       $resultado_votacion = mysqli_query($db, $votacion_query);
     }
-    header("Location:elegir.php")
+     header("Location:elegir.php") 
     
  
 ?>

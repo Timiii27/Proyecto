@@ -4,7 +4,7 @@ session_start();
 if (isset($_SESSION['username'])) {
     header("location: elegir.php");
 }else {
-    header("location: login.php");   
+    header("location: register.php");   
 }
 
 ?>

@@ -23,19 +23,19 @@ if (isset($_POST['submit'])) {
   // form validation: ensure that the form is correctly filled ...
   // by adding (array_push()) corresponding error unto $errors array
   if (empty($username)) {
-      array_push($errors, "Username is required");
+      array_push($errors, "Hace falta poner un usuario");
     }
   if (empty($email)) {
-      array_push($errors, "Email is required"); 
+      array_push($errors, "Hace falta poner un correo"); 
     }
   if (empty($password_1)) {
-      array_push($errors, "Password is required"); 
+      array_push($errors, "Hace falta poner una contraseña"); 
     }
     if(strlen($password_1) < 8 || !$number || !$uppercase || !$lowercase || !$specialChars) {
-        array_push($errors,"Password must be at least 8 characters in length and must contain at least one number, one upper case letter, one lower case letter and one special character.");
+        array_push($errors,"La contraseña debe tener 8 caractere de largo, un numero, una minscula, una mayuscula y un caracter especial");
     }
   if ($password_1 != $password_2) {
-	array_push($errors, "The two passwords do not match");
+	array_push($errors, "No coinciden las contraseñas");
   }
 
   // first check the database to make sure 
@@ -46,11 +46,11 @@ if (isset($_POST['submit'])) {
   
   if ($user) { // if user exists
     if ($user['username'] === $username) {
-      array_push($errors, "Username already exists");
+      array_push($errors, "Usuario ya existe");
     }
 
     if ($user['email'] === $email) {
-      array_push($errors, "email already exists");
+      array_push($errors, "Correo ya existe");
     }
   }
 
@@ -73,10 +73,10 @@ if (isset($_POST['login'])) {
     $password = mysqli_real_escape_string($db, $_POST['pass_login']);
   
     if (empty($username)) {
-        array_push($errors, "Username is required");
+        array_push($errors, "Hace falta poner el usuario");
     }
     if (empty($password)) {
-        array_push($errors, "Password is required");
+        array_push($errors, "Hace falta poner la contraseña");
     }
   
     if (count($errors) == 0) {

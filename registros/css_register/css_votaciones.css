@@ -1,0 +1,113 @@
+@font-face {
+    font-family: "FormulaBlack";
+    src: local("Formula1-Black"), url(../../styles/fonts/Formula1-Black.ttf) format("truetype");
+    
+  }
+@font-face {
+    font-family: "FormulaRegular";
+    src: local("Formula1-Regular"),url(../../styles/fonts/Formula1-Regular.ttf) format("truetype");
+  }
+@font-face {
+    font-family: "FormulaBold";
+    src: local("Formula1-Bold"), url(../../styles/fonts/Formula1-Bold.ttf) format("truetype");
+    
+  }
+@font-face {
+    font-family: "FormulaWide";
+    src: local("Formula1-Wide"), url(../../styles/fonts/Formula1-Wide.ttf) format("truetype");
+    
+  }
+body{
+  font-family: FormulaRegular ;
+  height: 100vh;
+   background-color: #000000;
+    background: #000000; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #000000, #434343); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #000000, #434343); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+   
+}nav{
+  height: 6rem;
+
+ font-family: FormulaRegular ;
+ background-color: #036564;
+ box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+ width:100%;
+ font-size: 1.3rem; 
+ z-index: 1;
+} 
+span{
+  font-family: FormulaBold;
+  color: white;
+
+}
+
+a {
+ color: rgb(255, 255, 255) ;
+ text-decoration: none; 
+  
+}
+
+
+a:hover{
+ transform: translateY(-7px);
+ transition: 0.3s ease-in;   
+ color: rgb(255, 0, 0);
+}
+
+input[type=submit]{
+  width: 270px;
+  height: 80px;
+  border: none;
+  outline: none;
+  background: #2f2f2f;
+  color: #fff;
+  font-size: 22px;
+  border-radius: 40px;
+  text-align: center;
+  box-shadow: 0 10px 20px -1px rgba(0, 0, 0, 0.808);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  
+}
+input[type=submit]:hover {
+  background: #000000;
+  transition: 1s ease-in-out;
+}
+
+table{
+  margin-top:20px;
+  
+}   
+th,tr,td{
+  color: rgb(255, 255, 255);
+  background-color:rgba(0, 0, 0, 0.171);
+  border: 3px solid rgb(49, 187, 206);
+  text-align: center;
+  padding: 10px;
+}
+tr,td{
+  color: rgb(214, 184, 51);
+}
+select{
+  background-color:rgba(0, 0, 0, 0.171);
+  border: 3px solid rgb(49, 187, 206);
+  color: white;
+}
+option{
+  font-family: FormulaBold;
+}
+option:nth-child(1),option:nth-child(6){
+  color: rgb(36, 152, 219);
+}
+
+option:nth-child(2),option:nth-child(10){
+  color: rgb(204, 67, 151);
+}
+
+option:nth-child(20),option:nth-child(3){
+  color: rgb(196, 60, 60);
+}
+option:nth-child(4),option:nth-child(17){
+  color: rgb(78, 62, 62);
+}

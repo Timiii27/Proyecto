@@ -28,13 +28,13 @@ body{
 }
 
 nav{
-     height: 6rem;
+     height: 5rem;
     position: fixed;
     font-family: FormulaRegular ;
     
     
     width:100%;
-    font-size: 1.3rem; 
+    font-size: 1.2rem; 
     z-index: 1;
 } 
 
@@ -43,9 +43,10 @@ nav{
     transition:0.4s ease-in;
     backdrop-filter: blur(4px);
 }
-.scroll a{
-    color: black;
-}
+    .scroll a{
+        color: black;
+    }
+
 a {
     color: rgb(255, 255, 255) ;
     text-decoration: none; 
@@ -59,16 +60,22 @@ button:hover,a:hover{
 }
 
 button {
-    border-radius: 10px;
-    background-color: transparent;
-    /* border: 2px solid rgb(0, 0, 0); */
+	border-radius: 20px;
+	border: 1px solid #FF4B2B;
+	background-color: #ff2600fa;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
 }
 
 .home-section {
-    height:80vh;
-    padding-left:70px;
-    padding-right:70px ;
-    
+    height: 100%;
+    padding:200px;
+ 
    /*  background-image: url("/images/fondo.jpg");
     background-attachment: fixed;
     background-position: center;
@@ -78,6 +85,7 @@ button {
 
 .jugar button{
     color: white;
+    background-color: black;
     
 }
 .card-1{
@@ -106,27 +114,60 @@ button {
 td{
     font-family: FormulaRegular ;
 }
+.welcome{
+    color: white;
+}
 td span{
     font-family: FormulaBold;
 }
 .ranking{
-    min-height:100vh;
+    height:100% ;
 
 }
  
-table{
-    margin-top:20px;
-    text-align:center;
-}   
-th,tr,td{
+table {
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: normal;
+    border: none;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+    white-space: nowrap;
+    background-color: white;
+  }
+  
+  td,th {
+    text-align: center;
+    padding: 8px;
+}
+  
+th {
+    color: #000000;
+    background: #4FC3A1;
+}
+  
+  td {
+    border-right: 1px solid #f8f8f8;
+    font-size: 12px;
+}
+  
+thead,th {
+    color: #ffffff;
+    background: #c34f4f;
+}
+
+
+
+/* th,tr,td{
     color: rgb(0, 0, 0);
     background-color: rgb(255, 255, 255);
     border: 1px solid rgb(0, 0, 0);
-}
+} */
 .banner-ranking{
     height:100px;
    
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(243, 29, 29);
     backdrop-filter: blur(10px);
 
 }
@@ -139,9 +180,8 @@ th,tr,td{
 
 }
 .reglas{
-    height:70vh;
-    padding-left:70px;
-    padding-right:70px ;
+    height:100%;
+
     
 }
 .reglas h1 {
@@ -149,8 +189,10 @@ th,tr,td{
 }
 .card{
     border:0;
+    margin: 50px;
     border-radius: 40px;
-    width:400px;
+    width:40%;
+    height:400px;
     letter-spacing: 4px;
     padding:40px;
     box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
@@ -175,4 +217,7 @@ th,tr,td{
 }
 .simply-word{
     font-family: FormulaRegular ;   
+}
+.messi{
+    vertical-align: middle;
 }
